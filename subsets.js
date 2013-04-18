@@ -1,19 +1,20 @@
-var combinations = exports.combinations = function (array, k) {
+// Return all combinations of a given size from the given array
+var combinations = exports.combinations = function (array, size) {
   var head;
   var tail;
 
   var c;
   var i, j;
 
-  if (k > array.length || k <= 0) {
+  if (size > array.length || size <= 0) {
     return [];
   }
 
-  if (k === array.length) {
+  if (size === array.length) {
     return [array];
   }
 
-  if (k === 1) {
+  if (size === 1) {
     c = [];
 
     for (i = 0; i < array.length; i++) {
@@ -25,9 +26,9 @@ var combinations = exports.combinations = function (array, k) {
 
   c = [];
 
-  for (i = 0; i < array.length - k + 1; i++) {
+  for (i = 0; i < array.length - size + 1; i++) {
     head = array.slice(i, i + 1);
-    tail = combinations(array.slice(i + 1), k - 1);
+    tail = combinations(array.slice(i + 1), size - 1);
 
     for (j = 0; j < tail.length; j++) {
       c.push(head.concat(tail[j]));
@@ -37,6 +38,7 @@ var combinations = exports.combinations = function (array, k) {
   return c;
 };
 
+// Return all combinations from the given array in the given size range
 exports.combinationsRange = function (array, start, end) {
   var c = [];
   var i;
@@ -48,6 +50,8 @@ exports.combinationsRange = function (array, start, end) {
   return c;
 };
 
+// Returns true if the largest number in the array is the sum of the rest of the
+// numbers
 exports.whereLargestIsSum = function (array) {
   array.sort(function (a, b) { return b - a; });
 
