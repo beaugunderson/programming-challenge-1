@@ -1,0 +1,13 @@
+{
+  "name": "programming-challenge-1",
+  "description": "",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "mocha -R spec --slow 60000 --timeout 120000"
+  },
+  "devDependencies": {
+    "chai": "",
+    "mocha": ""
+  },
+  "dependencies": {}
+}
